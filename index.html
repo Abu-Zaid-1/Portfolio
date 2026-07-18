@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <title>أبوزيد · مصمم جرافيك</title>
+
+    <!-- SEO -->
+    <meta name="description" content="أبوزيد، مصمم جرافيك محترف. بطاقة تعريف رقمية فاخرة." />
+    <meta name="keywords" content="مصمم جرافيك, أبوزيد, تصميم, شعارات, هوية بصرية" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="أبوزيد - مصمم جرافيك" />
+    <meta property="og:description" content="بطاقة تعريف رقمية فاخرة" />
+    <meta property="og:image" content="images/og-image.jpg" />
+    <meta property="og:url" content="https://www.example.com" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Playfair+Display:ital,wght@0,400;0,700;0,800;0,900;1,700&family=Montserrat:wght@300;400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
+
+    <!-- خط El Messiri الفاخر -->
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Line Icons (RemixIcon) -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet" />
+
+    <style>
+        /* ============================================================
+           RESET & BASE
+           ============================================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #07070c;
+            --bg-card: rgba(255, 255, 255, 0.015);
+            --accent: #7c4dff;
+            --accent-dim: rgba(124, 77, 255, 0.15);
+            --accent-glow: rgba(124, 77, 255, 0.20);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.72);
+            --text-muted: rgba(255, 255, 255, 0.22);
+            --border-light: rgba(255, 255, 255, 0.04);
+            --border-accent: rgba(124, 77, 255, 0.12);
+            --shadow-card: 0 30px 80px rgba(0, 0, 0, 0.7);
+            --font-arabic: 'Almarai', sans-serif;
+            --font-display: 'Playfair Display', serif;
+            --font-luxury: 'Cormorant Garamond', serif;
+            --font-primary: 'Montserrat', sans-serif;
+            --font-name: 'El Messiri', sans-serif;
+            --transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: var(--font-arabic);
+            background: var(--bg-primary);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.2rem;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            position: relative;
+            min-height: 100vh;
+            min-height: 100dvh;
+        }
+
+        /* ============================================================
+           BACKGROUND – طبقات فنية راقية
+           ============================================================ */
+        .bg-layer {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .bg-grid {
+            opacity: 0.04;
+            background-image:
+                linear-gradient(rgba(124, 77, 255, 0.3) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(124, 77, 255, 0.3) 1px, transparent 1px);
+            background-size: 60px 60px;
+            background-position: -1px -1px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .bg-watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: var(--font-luxury);
+            font-weight: 700;
+            font-size: clamp(18rem, 50vw, 40rem);
+            color: rgba(124, 77, 255, 0.025);
+            letter-spacing: -10px;
+            line-height: 1;
+            user-select: none;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .bg-shapes {
+            position: absolute;
+            inset: 0;
+            opacity: 0.035;
+        }
+        .bg-shapes svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .bg-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            filter: blur(100px);
+            opacity: 0.30;
+            animation: pulseGlow 10s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                opacity: 0.20;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                opacity: 0.40;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+
+        /* ============================================================
+           CARD – البطاقة الرئيسية – responsive مرن بالكامل
+           ============================================================ */
+        .card {
+            position: relative;
+            z-index: 1;
+            width: min(100%, 440px);
+            max-height: 98vh;
+            max-height: 98dvh;
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-light);
+            border-radius: 36px;
+            padding: clamp(1.4rem, 4vh, 2.6rem) clamp(1.2rem, 3vw, 2.2rem) clamp(1rem, 2.5vh, 2rem);
+            text-align: center;
+            box-shadow: var(--shadow-card), 0 0 0 1px rgba(124, 77, 255, 0.02) inset;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+            margin: auto;
+        }
+
+        .card::-webkit-scrollbar {
+            width: 2px;
+        }
+        .card::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .card::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 10px;
+        }
+
+        .card:hover {
+            border-color: var(--border-accent);
+        }
+
+        /* ============================================================
+           LOGO
+           ============================================================ */
+        .logo-wrap {
+            margin-bottom: clamp(0.2rem, 1vh, 0.8rem);
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .logo-img {
+            height: clamp(46px, 8vh, 68px);
+            width: auto;
+            display: inline-block;
+            transition: var(--transition);
+            filter: drop-shadow(0 0 30px rgba(124, 77, 255, 0.08));
+        }
+
+        .logo-img:hover {
+            transform: scale(1.04) rotate(-2deg);
+            filter: drop-shadow(0 0 50px rgba(124, 77, 255, 0.15));
+        }
+
+        /* ============================================================
+           NAME – باستخدام الخط الجديد El Messiri
+           الاسم أصبح "أبوزيد" (متصل)
+           ============================================================ */
+        .name {
+            font-family: var(--font-name);
+            font-weight: 700;
+            font-size: clamp(2.8rem, 10vw, 4.2rem);
+            letter-spacing: clamp(1px, 0.3vw, 4px);
+            color: var(--text-primary);
+            line-height: 1.1;
+            margin-bottom: 0.05rem;
+            text-shadow: 0 0 60px rgba(124, 77, 255, 0.06);
+            position: relative;
+            transition: var(--transition);
+            word-break: keep-all;
+            /* تمت إزالة التزيين السفلي (الـ underline) بالكامل */
+        }
+
+        .name:hover {
+            text-shadow: 0 0 80px rgba(124, 77, 255, 0.10);
+        }
+
+        /* ============================================================
+           TITLE
+           ============================================================ */
+        .title {
+            font-family: var(--font-primary);
+            font-weight: 300;
+            font-size: clamp(0.6rem, 1.2vw, 0.85rem);
+            letter-spacing: clamp(3px, 0.5vw, 5px);
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-top: clamp(0.2rem, 0.6vh, 0.6rem);
+            margin-bottom: 0.3rem;
+            opacity: 0.75;
+        }
+
+        /* ============================================================
+           BIO – سطر واحد فقط
+           ============================================================ */
+        .bio {
+            font-family: var(--font-arabic);
+            font-weight: 300;
+            font-size: clamp(0.65rem, 1.2vw, 0.85rem);
+            color: var(--text-muted);
+            max-width: 240px;
+            margin: 0.2rem auto clamp(0.8rem, 2vh, 1.6rem);
+            line-height: 1.6;
+            padding-top: clamp(0.3rem, 0.6vh, 0.6rem);
+            border-top: 1px solid var(--border-light);
+            letter-spacing: 0.3px;
+        }
+
+        /* ============================================================
+           BUTTONS – تصميم فاخر مع توزيع ذكي
+           ============================================================ */
+
+        .row-primary {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(0.4rem, 0.8vw, 0.7rem);
+            width: 100%;
+            margin-bottom: clamp(0.4rem, 0.8vw, 0.7rem);
+        }
+
+        .row-social {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: clamp(0.4rem, 0.8vw, 0.7rem);
+            width: 100%;
+            margin-bottom: 0;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(4px, 0.6vw, 10px);
+            padding: clamp(0.4rem, 1vh, 0.8rem) clamp(0.3rem, 0.8vw, 0.6rem);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-light);
+            border-radius: clamp(14px, 2vw, 18px);
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-family: var(--font-arabic);
+            font-size: clamp(0.6rem, 1vw, 0.85rem);
+            font-weight: 400;
+            transition: var(--transition);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            letter-spacing: 0.2px;
+            position: relative;
+            overflow: hidden;
+            min-height: clamp(32px, 6vh, 52px);
+            flex: 1 1 auto;
+        }
+
+        .btn i {
+            font-size: clamp(0.85rem, 1.4vw, 1.2rem);
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .btn span {
+            font-weight: 400;
+            white-space: nowrap;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.04);
+            border-color: var(--border-accent);
+            color: var(--text-primary);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:hover i {
+            transform: scale(1.06);
+        }
+
+        .btn-pdf {
+            background: rgba(124, 77, 255, 0.05);
+            border-color: rgba(124, 77, 255, 0.10);
+        }
+        .btn-pdf:hover {
+            background: rgba(124, 77, 255, 0.12);
+            border-color: var(--accent);
+            box-shadow: 0 8px 30px rgba(124, 77, 255, 0.10);
+        }
+        .btn-pdf i {
+            color: var(--accent);
+        }
+
+        .btn-be {
+            background: rgba(23, 105, 255, 0.04);
+            border-color: rgba(23, 105, 255, 0.08);
+        }
+        .btn-be:hover {
+            background: rgba(23, 105, 255, 0.10);
+            border-color: #1769ff;
+            box-shadow: 0 8px 30px rgba(23, 105, 255, 0.06);
+        }
+        .btn-be i {
+            color: #1769ff;
+        }
+
+        .btn-wa {
+            background: rgba(37, 211, 102, 0.04);
+            border-color: rgba(37, 211, 102, 0.08);
+        }
+        .btn-wa:hover {
+            background: rgba(37, 211, 102, 0.10);
+            border-color: #25d366;
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.06);
+        }
+        .btn-wa i {
+            color: #25d366;
+        }
+
+        .btn-ig {
+            background: rgba(225, 48, 108, 0.04);
+            border-color: rgba(225, 48, 108, 0.08);
+        }
+        .btn-ig:hover {
+            background: rgba(225, 48, 108, 0.10);
+            border-color: #e1306c;
+            box-shadow: 0 8px 30px rgba(225, 48, 108, 0.06);
+        }
+        .btn-ig i {
+            color: #e1306c;
+        }
+
+        .btn-fb {
+            background: rgba(24, 119, 242, 0.04);
+            border-color: rgba(24, 119, 242, 0.08);
+        }
+        .btn-fb:hover {
+            background: rgba(24, 119, 242, 0.10);
+            border-color: #1877f2;
+            box-shadow: 0 8px 30px rgba(24, 119, 242, 0.06);
+        }
+        .btn-fb i {
+            color: #1877f2;
+        }
+
+        .footer {
+            margin-top: clamp(0.4rem, 1.2vh, 1.2rem);
+            padding-top: clamp(0.4rem, 1vh, 0.9rem);
+            border-top: 1px solid var(--border-light);
+            font-family: var(--font-arabic);
+            font-size: clamp(0.45rem, 0.9vw, 0.65rem);
+            font-weight: 300;
+            color: var(--text-muted);
+            letter-spacing: 1.5px;
+            width: 100%;
+        }
+
+        .footer .brand {
+            font-weight: 600;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+        }
+
+        /* ============================================================
+           RESPONSIVE – تحسينات إضافية دقيقة
+           ============================================================ */
+
+        /* أجهزة صغيرة جداً */
+        @media (max-width: 420px) {
+            body {
+                padding: 0.6rem;
+            }
+            .card {
+                border-radius: 28px;
+                padding: 1.2rem 0.8rem 1rem;
+            }
+            .btn span {
+                font-size: 0.6rem;
+            }
+            .btn i {
+                font-size: 0.8rem;
+            }
+            .bio {
+                max-width: 180px;
+            }
+        }
+
+        /* أجهزة لوحية صغيرة */
+        @media (min-width: 600px) and (max-height: 800px) {
+            .card {
+                padding: 1.8rem 2rem 1.6rem;
+            }
+            .logo-img {
+                height: 60px;
+            }
+            .name {
+                font-size: 3.8rem;
+            }
+        }
+
+        /* شاشات عريضة */
+        @media (min-width: 1200px) {
+            .card {
+                padding: 2.8rem 2.8rem 2.2rem;
+            }
+            .logo-img {
+                height: 76px;
+            }
+            .name {
+                font-size: 4.6rem;
+            }
+        }
+
+        /* دعم مخصص للارتفاعات الصغيرة جداً */
+        @media (max-height: 600px) {
+            .card {
+                padding: 0.8rem 1.2rem 0.6rem;
+                border-radius: 24px;
+            }
+            .logo-img {
+                height: 34px;
+            }
+            .name {
+                font-size: 2.2rem;
+            }
+            .title {
+                font-size: 0.5rem;
+                margin-top: 0.1rem;
+            }
+            .bio {
+                display: none;
+            }
+            .btn {
+                min-height: 28px;
+                padding: 0.2rem 0.2rem;
+                font-size: 0.5rem;
+                border-radius: 12px;
+                gap: 3px;
+            }
+            .btn i {
+                font-size: 0.7rem;
+            }
+            .row-primary {
+                gap: 0.3rem;
+                margin-bottom: 0.3rem;
+            }
+            .row-social {
+                gap: 0.3rem;
+            }
+            .footer {
+                margin-top: 0.2rem;
+                padding-top: 0.2rem;
+                font-size: 0.4rem;
+            }
+        }
+
+        @media (max-height: 500px) {
+            .card {
+                padding: 0.5rem 0.8rem 0.4rem;
+                border-radius: 20px;
+            }
+            .logo-img {
+                height: 28px;
+            }
+            .name {
+                font-size: 1.8rem;
+            }
+            .title {
+                font-size: 0.45rem;
+                margin-top: 0;
+            }
+            .bio {
+                display: none;
+            }
+            .btn {
+                min-height: 24px;
+                padding: 0.15rem 0.15rem;
+                font-size: 0.45rem;
+                border-radius: 10px;
+                gap: 2px;
+            }
+            .btn i {
+                font-size: 0.6rem;
+            }
+            .row-primary {
+                gap: 0.2rem;
+                margin-bottom: 0.2rem;
+            }
+            .row-social {
+                gap: 0.2rem;
+            }
+            .footer {
+                margin-top: 0.1rem;
+                padding-top: 0.1rem;
+                font-size: 0.35rem;
+            }
+        }
+
+        /* منع تحديد الصور */
+        img {
+            -webkit-user-drag: none;
+            user-drag: none;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        ::-webkit-scrollbar {
+            width: 2px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+    <!-- ============================================================
+    BACKGROUND – طبقات فنية راقية
+    ============================================================ -->
+    <div class="bg-layer" aria-hidden="true">
+
+        <div class="bg-grid"></div>
+
+        <div class="bg-watermark">AZ</div>
+
+        <div class="bg-shapes">
+            <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="680" cy="140" r="70" fill="none" stroke="rgba(124,77,255,0.12)" stroke-width="1.2" />
+                <circle cx="100" cy="680" r="50" fill="none" stroke="rgba(124,77,255,0.08)" stroke-width="1" />
+                <rect x="700" y="600" width="80" height="80" rx="12" fill="none" stroke="rgba(124,77,255,0.05)" stroke-width="1.2" transform="rotate(25 740 640)" />
+                <rect x="20" y="100" width="50" height="50" rx="8" fill="none" stroke="rgba(124,77,255,0.05)" stroke-width="1" transform="rotate(-20 45 125)" />
+                <path d="M 720 380 Q 760 340 770 390 T 730 430" fill="none" stroke="rgba(124,77,255,0.04)" stroke-width="1.5" />
+                <path d="M 80 320 Q 40 280 30 330 T 70 370" fill="none" stroke="rgba(124,77,255,0.04)" stroke-width="1.5" />
+                <circle cx="400" cy="400" r="180" fill="none" stroke="rgba(124,77,255,0.03)" stroke-width="0.8" stroke-dasharray="8 12" />
+            </svg>
+        </div>
+
+        <div class="bg-glow"></div>
+    </div>
+
+    <!-- ============================================================
+    CARD – البطاقة الرقمية الفاخرة
+    ============================================================ -->
+    <main class="card">
+
+        <div class="logo-wrap">
+            <img src="images/logo.png" alt="أبوزيد - مصمم جرافيك" class="logo-img" draggable="false" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'45\' fill=\'%237c4dff\'/%3E%3Cpath d=\'M30 35 L70 35 L60 65 L40 65 Z\' fill=\'%23ffffff\' opacity=\'0.9\' /%3E%3C/svg%3E'">
+        </div>
+
+        <!-- تم تغيير الاسم إلى "أبوزيد" (متصل) -->
+        <h1 class="name">أبوزيد</h1>
+
+        <p class="title">Graphic Designer</p>
+
+        <p class="bio">تحويل الأفكار إلى هويات بصريّة</p>
+
+        <div class="row-primary">
+            <a href="portfolio.pdf" target="_blank" class="btn btn-pdf">
+                <i class="ri-file-pdf-line"></i>
+                <span>البورتفوليو</span>
+            </a>
+            <a href="https://www.behance.net/abuzaid22" target="_blank" class="btn btn-be">
+                <i class="ri-behance-line"></i>
+                <span>بيهانس</span>
+            </a>
+        </div>
+
+        <div class="row-social">
+            <a href="https://wa.me/201031423492?text=%D8%A3%D9%87%D9%84%D8%A7%D9%8B%20%D8%A3%D8%A8%D9%88%20%D8%B2%D9%8A%D8%AF" target="_blank" class="btn btn-wa">
+                <i class="ri-whatsapp-line"></i>
+                <span>واتساب</span>
+            </a>
+            <a href="https://instagram.com/abuzaid_designer" target="_blank" class="btn btn-ig">
+                <i class="ri-instagram-line"></i>
+                <span>إنستغرام</span>
+            </a>
+            <a href="https://www.facebook.com/abuzaid1designer" target="_blank" class="btn btn-fb">
+                <i class="ri-facebook-line"></i>
+                <span>فيسبوك</span>
+            </a>
+        </div>
+
+        <div class="footer">
+            <span class="brand">أبوزيد</span> · بطاقة تعريف رقمية
+        </div>
+
+    </main>
+
+    <script>
+        (function() {
+            'use strict';
+
+            document.querySelectorAll('img').forEach(function(img) {
+                img.setAttribute('draggable', 'false');
+                img.addEventListener('dragstart', function(e) {
+                    e.preventDefault();
+                    return false;
+                });
+                img.addEventListener('contextmenu', function(e) {
+                    e.preventDefault();
+                    return false;
+                });
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                    e.preventDefault();
+                    return false;
+                }
+                if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'i' || e.key === 'I')) {
+                    e.preventDefault();
+                    return false;
+                }
+                if ((e.ctrlKey || e.metaKey) && e.key === 'u') {
+                    e.preventDefault();
+                    return false;
+                }
+                if (e.key === 'F12') {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                return false;
+            });
+
+            console.log('🚀 Digital Business Card – أبوزيد (فاخرة)');
+        })();
+    </script>
+
+</body>
+</html>
